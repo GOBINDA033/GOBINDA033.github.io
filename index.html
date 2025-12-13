@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gobinda | Developer Portfolio</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#020617;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.15);
+  --main:#22d3ee;
+  --accent:#a855f7;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+.light{
+  --bg:#f8fafc;
+  --glass:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.1);
+  --text:#020617;
+  --muted:#475569;
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+  font-family:Segoe UI,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;width:100%;
+  padding:14px 24px;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  z-index:1000;
+}
+nav h2{
+  background:linear-gradient(45deg,var(--main),var(--accent));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.nav-links{display:flex;gap:20px}
+.nav-links a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  position:relative;
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-5px;
+  width:0;height:2px;
+  background:linear-gradient(45deg,var(--main),var(--accent));
+  transition:.3s;
+}
+.nav-links a:hover::after{width:100%}
+.hamburger{display:none;font-size:26px;cursor:pointer;color:var(--main)}
+.toggle{cursor:pointer;font-size:20px}
+
+/* HERO */
+header{
+  padding:140px 20px 90px;
+  text-align:center;
+}
+.profile-pic{
+  width:165px;height:165px;
+  border-radius:50%;
+  border:4px solid var(--main);
+  box-shadow:0 0 35px var(--main);
+  object-fit:cover;
+}
+header h1{font-size:3.2rem;margin-top:18px}
+header p{color:var(--muted);margin-top:10px;min-height:28px}
+
+/* SECTIONS */
+section{
+  max-width:1000px;
+  margin:90px auto;
+  padding:0 20px;
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+section.show{opacity:1;transform:none}
+h2{
+  font-size:2.2rem;
+  margin-bottom:22px;
+  background:linear-gradient(45deg,var(--main),var(--accent));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  padding:26px;
+  border-radius:20px;
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 30px rgba(34,211,238,.15);
+}
+
+/* BUTTON */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 26px;
+  background:linear-gradient(45deg,var(--main),var(--accent));
+  color:#020617;
+  border-radius:14px;
+  font-weight:700;
+  text-decoration:none;
+  margin:10px;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.05)}
+
+/* SKILLS */
+.skills{display:flex;flex-wrap:wrap;justify-content:center}
+.skills span{
+  padding:10px 18px;
+  margin:8px;
+  border-radius:30px;
+  background:linear-gradient(45deg,var(--main),var(--accent));
+  color:#020617;
+  font-weight:700;
+}
+
+/* PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* PROFILES */
+.profile-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:35px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{
+    position:absolute;
+    top:60px;right:0;
+    background:var(--bg);
+    flex-direction:column;
+    width:220px;
+    display:none;
+    padding:20px;
+  }
+  .nav-links.show{display:flex}
+  .hamburger{display:block}
+  header h1{font-size:2.4rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Gobinda</h2>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="menu">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#profiles">Profiles</a>
+  </div>
+  <div class="toggle" onclick="toggleTheme()">🌙</div>
+</nav>
+
+<header>
+  <img src="gr.jpg" class="profile-pic">
+  <h1>Gobinda</h1>
+  <p id="typing"></p>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    I’m a BCA student who enjoys software development and problem-solving. I’m currently focusing Data Structures and Algorithms to improve my logical thinking and coding efficiency. Along with DSA, I’m learning Java and Python automation and have worked with DBMS, OOP concepts, MySQL, JDBC, HTML, and CSS. I’ve built a few small projects during my learning journey and I focus on writing clean, efficient code with good performance
+    <br>
+  
+    <br><br>
+    <a href="Gobinda (1).pdf" download class="btn">
+      <i class="fa-solid fa-download"></i> Download Resume
+    </a>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">🏠 Smart Home Controller (Python Automation)</div>
+    <div class="card">⚙ IP-Address-Finder-by-url(Java,java.net)</div>
+    <div class="card">Sweetshop.com(HTML5,CSS)</div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="card skills">
+    <span>Java</span><span>Python Automation</span><span>DSA</span>
+    <span>OOP</span><span>SQL</span>
+    
+    
+    <span>JDBC</span><span>HTML5</span><span>CSS</span>
+  </div>
+</section>
+
+
+<section id="card skills">
+  <h2>Editors & Devloper Tools</h2>
+  <div class="card skills">
+    <span>VS Code</span><span>NetBeans</span><span>IntelliJ IDEA</span>
+    <span>SublimeText</span><span>Git & GitHub</span>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section id="profiles">
+  <h2>Profiles</h2>
+  <div class="card profile-links">
+    <a class="btn" target="_blank" href="https://github.com/GOBINDA033">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+    <a class="btn" target="_blank" href="https://www.linkedin.com/in/gobinda-240855289/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+      <i class="fa-brands fa-linkedin"></i> LinkedIn
+    </a>
+    <a class="btn" target="_blank" href="https://leetcode.com/u/Gobinda_033/">
+      <i class="fa-solid fa-code"></i> LeetCode
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Gobinda | Crafted with Logic & Code
+</footer>
+
+<script>
+/* Typing */
+const typing=document.getElementById("typing");
+const text="Problem Solver | Java & Python Developer | Automation Enthusiast";
+let i=0;
+typing.textContent="";
+(function type(){
+  if(i<text.length){
+    typing.textContent+=text[i++];
+    setTimeout(type,70);
+  }
+})();
+
+/* Scroll animation */
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll("section").forEach(sec=>{
+    if(sec.getBoundingClientRect().top<window.innerHeight-120){
+      sec.classList.add("show");
+    }
+  });
+});
+
+/* Menu */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+
+/* Theme */
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
